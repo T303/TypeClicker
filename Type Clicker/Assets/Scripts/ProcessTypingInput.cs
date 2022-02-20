@@ -7,10 +7,7 @@ public class ProcessTypingInput : MonoBehaviour
 {
     int positionInSentence = 0;
     int positionToPop = 0;
-    public FileReader fileReader;
     public TMPro.TextMeshProUGUI outputText;
-    public GameManager gm;
-    public WPMCalculator wpmCalc;
     public LetterPopper letterPopper;
 
     //[SerializeField] VFXManager vfx;
@@ -23,7 +20,7 @@ public class ProcessTypingInput : MonoBehaviour
     public Color backgroundColor;
     void Start()
     {
-        outputText.text = fileReader.getSentence();
+        //outputText.text = fileReader.getSentence();
         SetCurrentWord();
     }
 
@@ -31,9 +28,9 @@ public class ProcessTypingInput : MonoBehaviour
 
     private void SetCurrentWord()
     {
-        currentWord = fileReader.getSentence();
+        currentWord = FileReader.Instance.getSentence();
         //gm.updateRaceState(false);
-        wpmCalc.resetWPM();
+        WPMCalculator.Instance.resetWPM();
         positionInSentence = 0;
 
         SetRemainingWord(currentWord);
@@ -74,14 +71,13 @@ public class ProcessTypingInput : MonoBehaviour
 
     private void EnterLetter(string typedLetter)
     {
-        wpmCalc.startTimer();
+        WPMCalculator.Instance.startTimer();
         if (IsCorrectLetter(typedLetter))
         {
-            gm.increasePoints(1);
-            wpmCalc.characterWasPressed();
+            GameManager.Instance.increasePoints(1);
+            WPMCalculator.Instance.characterWasPressed();
             RemoveLetter();
             addTypedLetter();
-            //letterPopper.pop(outputText, typedLetter);
             VFXManager.Instance.pop(outputText, typedLetter);
             if (IsWordComplete())
             {
@@ -110,7 +106,7 @@ public class ProcessTypingInput : MonoBehaviour
 
     public void finishSentence()
     {
-        wpmCalc.updateWPM();
+        WPMCalculator.Instance.updateWPM();
         //letterPopper.resetPositionInSentence();
         VFXManager.Instance.resetPositionInSentence();
         //gm.setBackgroundForNonTyping();
