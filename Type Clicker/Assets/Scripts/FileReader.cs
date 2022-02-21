@@ -7,13 +7,10 @@ using System;
 
 public class FileReader : MonoBehaviour
 {
-    private static FileReader _instance;
-    public static FileReader Instance { get { return _instance; } }
-
     string path = "Assets/Texts/The_Fourth_Dimension.txt";
-    [SerializeField] TextAsset TheCommunistManifesto;
-    [SerializeField] TextAsset TheFourthDimension;
-    [SerializeField] TextAsset topWords;
+    public TextAsset TheCommunistManifesto;
+    public TextAsset TheFourthDimension;
+    public TextAsset topWords;
     StreamReader reader;
     string[] words;
 
@@ -25,20 +22,20 @@ public class FileReader : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        } else
-        {
-            _instance = this;
-        }
-        /*
         //reader = new StreamReader(TheCommunistManifesto.text);
         //words = reader.ReadToEnd().Split(' ');
         //words = TheCommunistManifesto.ToString().Split(' ');
         //words = TheFourthDimension.ToString().Split(' ');
-        */
         words = topWords.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+
+
+        //outputText.text = words[Random.Range(0, words.Length)];
+        foreach (string word in words)
+        {
+            //Debug.Log(word);
+        }
+        //reader.Close();
     }
 
     private void Update()
@@ -66,8 +63,6 @@ public class FileReader : MonoBehaviour
 
     public string getWord()
     {
-
-        return this.words[UnityEngine.Random.Range(0, this.words.Length)];
         /*
         while (true)
         {
@@ -91,11 +86,16 @@ public class FileReader : MonoBehaviour
             }
             continue;
         }
+        */
+        return this.words[UnityEngine.Random.Range(0, this.words.Length)];
+
+        /*
         if(words != null)
         {
             while (true)
             {
                 //checking individual condition that are wrong
+                /*
                 string word = words[Random.Range(0, words.Length)];
                 if (word.Contains(".") || word.Contains(",") || word.Contains("?") || word.Contains(" ") || word.Contains("\n") || word.Contains("\"") || word.Contains("(") || word.Contains(")") || word.Contains("/"))
                 {

@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class WPMCalculator : MonoBehaviour
 {
-
-    private static WPMCalculator _instance;
-    public static WPMCalculator Instance { get { return _instance; } }
-
     float time;
     float timeFromStartOfSentence;
     public TMPro.TextMeshProUGUI outputWPM;
@@ -27,18 +23,6 @@ public class WPMCalculator : MonoBehaviour
         {
             timerHasStarted = true;
             gm.setBackgroundForTyping();
-        }
-    }
-
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
         }
     }
 
