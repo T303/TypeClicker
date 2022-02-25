@@ -33,6 +33,27 @@ public class VFXManager : MonoBehaviour
         resetPositionInSentence();
     }
 
+    public void setInitialPositionOfInsertionPoint(TextMeshProUGUI mesh)
+    {
+        Vector3 positionOfFirstLetter = mesh.textInfo.characterInfo[0].bottomLeft;
+        Vector3 worldPositionOfLetter = mesh.transform.TransformPoint(positionOfFirstLetter); //Now we have an accurate world position of the letter that was just typed
+
+        Debug.Log("Insertion point x should be " + worldPositionOfLetter.x);
+        InsertionPoint.Instance.setPosition(worldPositionOfLetter.x);
+    }
+
+    public void updatePositionOfInsertionPoint(TextMeshProUGUI mesh)
+    {
+        Vector3 positionOfFirstLetter = mesh.textInfo.characterInfo[positionInSentence].bottomLeft;
+        Vector3 worldPositionOfLetter = mesh.transform.TransformPoint(positionOfFirstLetter); //Now we have an accurate world position of the letter that was just typed
+
+        char c = mesh.textInfo.characterInfo[positionInSentence].character;
+        float advance = mesh.textInfo.characterInfo[positionInSentence].xAdvance;
+        float origin = mesh.textInfo.characterInfo[positionInSentence].origin;
+
+        InsertionPoint.Instance.moveToNextLetter(advance - origin);
+    }
+
     public void markError(TextMeshProUGUI outputText)
     {
         Vector3 positionOfFirstLetter = outputText.textInfo.characterInfo[positionInSentence].bottomLeft;
@@ -69,6 +90,8 @@ public class VFXManager : MonoBehaviour
 
     public void pop(TextMeshProUGUI outputText, string letterChar)
     {
+        //updatePositionOfInsertionPoint(outputText);
+
         //Debug.Log(outputText.textInfo.characterInfo[index].character);
         Vector3 positionOfFirstLetter = outputText.textInfo.characterInfo[positionInSentence].topLeft;
         Vector3 worldPositionOfLetter = outputText.transform.TransformPoint(positionOfFirstLetter); //Now we have an accurate world position of the letter that was just typed

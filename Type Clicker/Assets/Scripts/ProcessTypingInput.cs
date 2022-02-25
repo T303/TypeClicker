@@ -29,10 +29,13 @@ public class ProcessTypingInput : MonoBehaviour
     private void SetCurrentWord()
     {
         currentWord = FileReader.Instance.getSentence();
+        
         //gm.updateRaceState(false);
         WPMCalculator.Instance.resetWPM();
         positionInSentence = 0;
-
+        outputText.text = currentWord;
+        Debug.Log("outputText is set to " + currentWord);
+        VFXManager.Instance.setInitialPositionOfInsertionPoint(outputText);
         SetRemainingWord(currentWord);
     }
 
@@ -45,6 +48,7 @@ public class ProcessTypingInput : MonoBehaviour
     {
         remainingWord = newString;
         outputText.text = currentWord;
+        
     }
 
     private void Update()
