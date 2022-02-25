@@ -2871,6 +2871,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1460932726}
     m_Modifications:
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.14722349
+      objectReference: {fileID: 0}
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6132076
+      objectReference: {fileID: 0}
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.6603774
+      objectReference: {fileID: 0}
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.6603774
+      objectReference: {fileID: 0}
+    - target: {fileID: 620215359910407072, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.6603774
+      objectReference: {fileID: 0}
     - target: {fileID: 727524280787419014, guid: 0c6d387144e34fc4ca138a1e4561c634, type: 3}
       propertyPath: m_text
       value: Kailh Box Jade
